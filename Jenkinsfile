@@ -12,14 +12,14 @@ pipeline{
           stage("maven build"){
               steps{
                 sh "mvn clean install"
-                sh "mv target/*.war target/myweb.war"
+                sh "mv target/*.war target/manno.war"
                }
           }
           stage("tomcat deploy"){
               steps{
               sshagent(['tomcat-new']) {
                  sh """
-                     scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@44.211.191.236:/opt/tomcat/webapps
+                     scp -o StrictHostKeyChecking=no target/manno.war ec2-user@44.211.191.236:/opt/tomcat/webapps
                      ssh ec2-user@44.211.191.236 /opt/tomcat/bin/shutdown.sh
                      ssh ec2-user@44.211.191.236 /opt/tomcat/bin/startup.sh
                      
