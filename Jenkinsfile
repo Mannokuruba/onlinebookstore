@@ -2,7 +2,7 @@ pipeline{
      agent any
 
      environment{
-            PATH = "/opt/maven3?bin:$PATH"
+            PATH = "/opt/maven/bin:$PATH"
      }
      stages{
         stage("git chechkout"){
