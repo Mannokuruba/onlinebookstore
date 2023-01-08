@@ -23,7 +23,7 @@ pipeline{
          }
           stage("tomcat deploy"){
               steps{
-              sshagent(['tomcat-new']) {
+              sshagent(['tomcat-new']) {  
                  sh """
                      scp -o StrictHostKeyChecking=no target/manno.war ec2-user@44.211.191.236:/opt/tomcat/webapps
                      ssh ec2-user@44.211.191.236 /opt/tomcat/bin/shutdown.sh
