@@ -1,11 +1,11 @@
-pipeline {  
-    agent any  
-        stages {  
-       	    stage("git_checkout") {  
-           	    steps {  
-              	    echo "cloning repository" 
-              	    echo "repo cloned successfully"  
-              	    }  
-         	    } 
+pipeline{
+     agent any
+     stages{
+        stage("git chechkout"){
+          steps{
+               git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git'
+
+          }
         }
+     }
 }
