@@ -9,17 +9,18 @@ pipeline{
                 git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git'
                }
           }
-          stage("publish to s3"){
-              steps{
-                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'mybcuket123', excludedFile: 'target', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: 'target/*.war', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'SUCCESS', profileName: 'mybcuket123', userMetadata: []
-               }
-         }
+          
           stage("maven build"){
               steps{
                 sh "mvn clean install"
                 sh "mv target/*.war target/manno.war"
                }
           }
+          stage("publish to s3"){
+              steps{
+                s3Upload consoleLogLevel: 'INFO', dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'mybcuket123', excludedFile: 'target', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-1', showDirectlyInBrowser: false, sourceFile: 'target/*.war', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: 'SUCCESS', profileName: 'mybcuket123', userMetadata: []
+               }
+         }
           stage("tomcat deploy"){
               steps{
               sshagent(['tomcat-new']) {
