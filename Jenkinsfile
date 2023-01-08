@@ -1,5 +1,9 @@
 pipeline{
      agent any
+
+     environment{
+            PATH = "/opt/maven3?bin:$PATH"
+     }
      stages{
         stage("git chechkout"){
           steps{
@@ -9,9 +13,9 @@ pipeline{
         }
         stage("maven build"){
           steps{
-              sh "clean install package"
+              sh "mvn clean package"
           }
         }
 
-        }   
+     }   
 }
