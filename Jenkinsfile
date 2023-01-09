@@ -3,7 +3,7 @@ pipeline{
      environment {
            PATH = "/opt/maven/bin/:$PATH"
      }
-      stages{
+      stages{  
           stage("git chechkout"){
               steps{
                 git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git'
