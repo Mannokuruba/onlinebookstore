@@ -8,7 +8,7 @@ pipeline{
               steps{
                 git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git'
                }
-          }
+          }   
           
           stage("maven build"){
               steps{
