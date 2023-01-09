@@ -28,7 +28,7 @@ pipeline{
                      scp -o StrictHostKeyChecking=no target/manno2.war ec2-user@44.211.191.236:/opt/tomcat/webapps
                      ssh ec2-user@44.211.191.236 /opt/tomcat/bin/shutdown.sh
                      ssh ec2-user@44.211.191.236 /opt/tomcat/bin/startup.sh
-                     
+                       
                      """
               }  
               
