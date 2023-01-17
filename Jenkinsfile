@@ -13,7 +13,7 @@ pipeline{
           stage("maven build"){
               steps{
                 sh "mvn clean install"
-                sh "mv target/*.war target/mannoadith2.war"
+                sh "mv target/*.war target/manno1.war"
                }
           }
            stage("SonarQube analysis"){
@@ -34,7 +34,7 @@ pipeline{
               steps{
               sshagent(['tomcat-new']) {  
                  sh """
-                     scp -o StrictHostKeyChecking=no target/mannoadith2.war ec2-user@172.31.81.233:/opt/tomcat/webapps
+                     scp -o StrictHostKeyChecking=no target/manno1.war ec2-user@172.31.81.233:/opt/tomcat/webapps
                      ssh ec2-user@172.31.81.233 /opt/tomcat/bin/shutdown.sh
                      ssh ec2-user@172.31.81.233 /opt/tomcat/bin/startup.sh
                        
