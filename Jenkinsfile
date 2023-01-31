@@ -6,7 +6,7 @@ pipeline{
       stages{      
           stage("git chechkout"){
               steps{
-                git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git'
+                git credentialsId: 'Git Cred', url: 'https://github.com/Mannokuruba/onlinebookstore.git' 
                }
           }   
           
