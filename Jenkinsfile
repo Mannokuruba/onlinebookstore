@@ -1,4 +1,4 @@
-pipeline{
+pipeline{ 
      agent { label 'tomcat '}
      environment {
            PATH = "/opt/maven/bin/:$PATH"
