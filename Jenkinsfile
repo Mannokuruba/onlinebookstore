@@ -52,7 +52,7 @@ pipeline{
         sh label: '', script: '''rm -rf dockerimg
 mkdir dockering
 cd dockering
-cp  /home/manoj/workspace/cicd/target/*.war .
+cp  /home/manoj/workspace/completeproject/target/*.war .
 touch Dockerfile
 cat <<EOT>>Dockerfile
 FROM tomcat
