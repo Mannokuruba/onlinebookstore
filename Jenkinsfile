@@ -45,8 +45,24 @@ pipeline{
 
             }
             
-         } 
+         }
+         stage('Deploy'){
+      agent { label 'tomcat '}
+      steps{
+        sh label: '', script: '''rm -rf dockerimg
+mkdir dockering
+cd dockering
+cp  /home/manoj/workspace/cicd/target/*.war .
+touch Dockerfile
+cat <<EOT>>Dockerfile
+FROM tomcat
+ADD mannojob.war /usr/local/tomcat/webapps/
+CMD ["catalina.sh", "run"]
+EXPOSE 8080
+EOT
+docker build -t webimage:$BUILD_NUMBER .
+docker container run -itd --name webserver$BUILD_NUMBER -p 8080 webimage:$BUILD_NUMBER'''
      }
   }
-
-
+      }
+}
