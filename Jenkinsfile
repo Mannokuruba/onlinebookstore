@@ -16,11 +16,11 @@ pipeline{
                 sh "mv target/*.war target/mannojob.war"
                }
           }
-           //stage("SonarQube analysis"){
+           ##stage("SonarQube analysis"){
                 
-              steps{
-                   withSonarQubeEnv('sonarqube-9.0.1'){
-                  sh "mvn sonar:sonar"
+             ## steps{
+               ##    withSonarQubeEnv('sonarqube-9.0.1'){
+                ##  sh "mvn sonar:sonar"
                     
                }
           }
