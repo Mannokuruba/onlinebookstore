@@ -47,7 +47,7 @@ pipeline{
             
          }
          stage('Deploy'){
-      agent { label 'tomcat '}
+      
       steps{
         sh label: '', script: '''rm -rf dockerimg
 mkdir dockering
