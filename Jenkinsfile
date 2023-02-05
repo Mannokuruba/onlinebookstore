@@ -49,7 +49,7 @@ pipeline{
          stage('Deploy'){
       
       steps{
-        sh label: '', script: '''rm -rf dockerimg
+        sh label: '', script: '''rm -rf dockering
 mkdir dockering
 cd dockering
 cp  /home/manoj/workspace/completeproject/target/*.war .
